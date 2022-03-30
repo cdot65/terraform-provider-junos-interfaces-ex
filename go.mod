@@ -1,5 +1,5 @@
 
-module terraform-provider-junos-interfaces
+module terraform-provider-junos-ex-interfaces
 
 go 1.14
 

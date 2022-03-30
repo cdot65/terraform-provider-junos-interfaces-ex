@@ -89,14 +89,11 @@ func Provider() *schema.Provider {
 		},
 
 		ResourcesMap: map[string]*schema.Resource{
-			"junos-interfaces_InterfacesInterfaceName": junosInterfacesInterfaceName(),
-			"junos-interfaces_InterfacesInterfaceDescription": junosInterfacesInterfaceDescription(),
-			"junos-interfaces_InterfacesInterfaceUnitName": junosInterfacesInterfaceUnitName(),
-			"junos-interfaces_InterfacesInterfaceUnitFamilyEthernet__SwitchingInterface__Mode": junosInterfacesInterfaceUnitFamilyEthernet__SwitchingInterface__Mode(),
-			"junos-interfaces_InterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembers": junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembers(),
-			"junos-interfaces_InterfacesInterfaceUnitFamilyEthernet__SwitchingStorm__ControlProfile__Name": junosInterfacesInterfaceUnitFamilyEthernet__SwitchingStorm__ControlProfile__Name(),
-			"junos-interfaces_commit": junosCommit(),
-	        "junos-interfaces_destroycommit": junosDestroyCommit(),
+			"junos-ex-interfaces_InterfacesInterfaceDescription": junosInterfacesInterfaceDescription(),
+			"junos-ex-interfaces_InterfacesInterface__RangeUnitFamilyEthernet__SwitchingInterface__Mode": junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingInterface__Mode(),
+			"junos-ex-interfaces_InterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembers": junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembers(),
+			"junos-ex-interfaces_commit": junosCommit(),
+	        "junos-ex-interfaces_destroycommit": junosDestroyCommit(),
 			},
 		    ConfigureFunc: providerConfigure,
 	    } 

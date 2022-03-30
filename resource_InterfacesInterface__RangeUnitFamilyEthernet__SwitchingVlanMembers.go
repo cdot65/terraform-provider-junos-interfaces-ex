@@ -10,13 +10,13 @@ import (
 
 // v_ is appended before every variable so it doesn't give any conflict
 // with any keyword in golang. ex - interface is keyword in golang
-type xmlInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembers struct {
+type xmlInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembers struct {
 	XMLName xml.Name `xml:"configuration"`
 	Groups  struct {
 		XMLName	xml.Name	`xml:"groups"`
 		Name	string	`xml:"name"`
-		V_interface  struct {
-			XMLName xml.Name `xml:"interface"`
+		V_interface__range  struct {
+			XMLName xml.Name `xml:"interface-range"`
 			V_name  *string  `xml:"name,omitempty"`
 			V_unit  struct {
 				XMLName xml.Name `xml:"unit"`
@@ -26,14 +26,14 @@ type xmlInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembers struct {
 					V_members  *string  `xml:"members,omitempty"`
 				} `xml:"family>ethernet-switching>vlan"`
 			} `xml:"unit"`
-		} `xml:"interfaces>interface"`
+		} `xml:"interfaces>interface-range"`
 	} `xml:"groups"`
 	ApplyGroup string `xml:"apply-groups"`
 }
 
 // v_ is appended before every variable so it doesn't give any conflict
 // with any keyword in golang. ex- interface is keyword in golang
-func junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersCreate(d *schema.ResourceData, m interface{}) error {
+func junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersCreate(d *schema.ResourceData, m interface{}) error {
 
 	var err error
 	client := m.(*ProviderConfig)
@@ -44,40 +44,40 @@ func junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersCreate(d *s
 	V_members := d.Get("members").(string)
 
 
-	config := xmlInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembers{}
+	config := xmlInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembers{}
 	config.ApplyGroup = id
 	config.Groups.Name = id
-	config.Groups.V_interface.V_name = &V_name
-	config.Groups.V_interface.V_unit.V_name__1 = &V_name__1
-	config.Groups.V_interface.V_unit.V_vlan.V_members = &V_members
+	config.Groups.V_interface__range.V_name = &V_name
+	config.Groups.V_interface__range.V_unit.V_name__1 = &V_name__1
+	config.Groups.V_interface__range.V_unit.V_vlan.V_members = &V_members
 
     err = client.SendTransaction("", config, false)
     check(err)
     
     d.SetId(fmt.Sprintf("%s_%s", client.Host, id))
     
-	return junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersRead(d,m)
+	return junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersRead(d,m)
 }
 
-func junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersRead(d *schema.ResourceData, m interface{}) error {
+func junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersRead(d *schema.ResourceData, m interface{}) error {
 
 	var err error
 	client := m.(*ProviderConfig)
 
     id := d.Get("resource_name").(string)
     
-	config := &xmlInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembers{}
+	config := &xmlInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembers{}
 
 	err = client.MarshalGroup(id, config)
 	check(err)
- 	d.Set("name", config.Groups.V_interface.V_name)
-	d.Set("name__1", config.Groups.V_interface.V_unit.V_name__1)
-	d.Set("members", config.Groups.V_interface.V_unit.V_vlan.V_members)
+ 	d.Set("name", config.Groups.V_interface__range.V_name)
+	d.Set("name__1", config.Groups.V_interface__range.V_unit.V_name__1)
+	d.Set("members", config.Groups.V_interface__range.V_unit.V_vlan.V_members)
 
 	return nil
 }
 
-func junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersUpdate(d *schema.ResourceData, m interface{}) error {
+func junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersUpdate(d *schema.ResourceData, m interface{}) error {
 
 	var err error
 	client := m.(*ProviderConfig)
@@ -88,20 +88,20 @@ func junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersUpdate(d *s
 	V_members := d.Get("members").(string)
 
 
-	config := xmlInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembers{}
+	config := xmlInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembers{}
 	config.ApplyGroup = id
 	config.Groups.Name = id
-	config.Groups.V_interface.V_name = &V_name
-	config.Groups.V_interface.V_unit.V_name__1 = &V_name__1
-	config.Groups.V_interface.V_unit.V_vlan.V_members = &V_members
+	config.Groups.V_interface__range.V_name = &V_name
+	config.Groups.V_interface__range.V_unit.V_name__1 = &V_name__1
+	config.Groups.V_interface__range.V_unit.V_vlan.V_members = &V_members
 
     err = client.SendTransaction(id, config, false)
     check(err)
     
-	return junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersRead(d,m)
+	return junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersRead(d,m)
 }
 
-func junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersDelete(d *schema.ResourceData, m interface{}) error {
+func junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersDelete(d *schema.ResourceData, m interface{}) error {
 
 	var err error
 	client := m.(*ProviderConfig)
@@ -116,12 +116,12 @@ func junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersDelete(d *s
 	return nil
 }
 
-func junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembers() *schema.Resource {
+func junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembers() *schema.Resource {
 	return &schema.Resource{
-		Create: junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersCreate,
-		Read: junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersRead,
-		Update: junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersUpdate,
-		Delete: junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembersDelete,
+		Create: junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersCreate,
+		Read: junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersRead,
+		Update: junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersUpdate,
+		Delete: junosInterfacesInterface__RangeUnitFamilyEthernet__SwitchingVlanMembersDelete,
 
         Schema: map[string]*schema.Schema{
             "resource_name": &schema.Schema{
@@ -131,17 +131,17 @@ func junosInterfacesInterfaceUnitFamilyEthernet__SwitchingVlanMembers() *schema.
 			"name": &schema.Schema{
 				Type:    schema.TypeString,
 				Optional: true,
-				Description:    "xpath is: config.Groups.V_interface",
+				Description:    "xpath is: config.Groups.V_interface__range",
 			},
 			"name__1": &schema.Schema{
 				Type:    schema.TypeString,
 				Optional: true,
-				Description:    "xpath is: config.Groups.V_interface.V_unit",
+				Description:    "xpath is: config.Groups.V_interface__range.V_unit",
 			},
 			"members": &schema.Schema{
 				Type:    schema.TypeString,
 				Optional: true,
-				Description:    "xpath is: config.Groups.V_interface.V_unit.V_vlan. Membership for this interface (name or id)",
+				Description:    "xpath is: config.Groups.V_interface__range.V_unit.V_vlan. Membership for this interface (name or id)",
 			},
 		},
 	}
